@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1kB</title>
+
+  <head>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+      .a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        gap: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="a">
+      <canvas id="c" width="200" height="200"></canvas>
+      <div>
+        <h1>Hello, I'm Emi!</h1>
+        <ul>
+          <li>
+            You can find my main site at
+            <a href="https://emi.industries">emi.industries</a>.
+          </li>
+          <li>
+            I also post some of my photos over at
+            <a href="https://kondens.at">kondens.at</a>!
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      var ctx = document.getElementById("c").getContext("2d");
+      r = () => {
+        return Math.round(Math.random() * 20);
+      };
+      setInterval(() => {
+        ctx.fillStyle = "rgb(200, 0, 0)";
+        ctx.fillRect(1 + r() * 10, 1 + r() * 10, 8, 8);
+      }, 10);
+    </script>
+  </body>
+</html>
