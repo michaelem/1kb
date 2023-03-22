@@ -1,0 +1,14 @@
+{
+  "name": "1kb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "minify src/index.html > dist/index.html; ls -S -lh dist/index.html | awk '{print $5, $9}'"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "minify": "^9.2.0"
+  }
+}
