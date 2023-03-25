@@ -5,21 +5,37 @@
 
   <head>
     <style>
-      body {
-        background-color: antiquewhite;
+      body,html {
+        margin: 0;
+        padding: 0;
+        background-color: #fefaf0;
+        font-size: 24px;
       }
-      .a {
+      
+      a {
+        color: #990033;
+        text-decoration: none;
+      }
+
+      #a {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 90vh;
+        height: 100vh;
         gap: 32px;
+        font-family: sans-serif;
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
       }
     </style>
   </head>
+  
   <body>
-    <div class="a">
-      <canvas id="c" width="200" height="200"></canvas>
+    <div id="a">
+      <canvas id="c" width="200" height="200"/></canvas>
       <div>
         <h1>Hello, I'm Emi!</h1>
         <ul>
@@ -34,15 +50,30 @@
         </ul>
       </div>
     </div>
+
     <script>
-      var ctx = document.getElementById("c").getContext("2d");
-      r = () => {
-        return Math.round(Math.random() * 20);
-      };
+      r = () => Math.round(Math.random() * 7);
+      s = (a) => 1 + a * 25;
+
+      let ar = Array(8).fill().map(() => Array(8).fill(0));
+      let c = document.getElementById("c")
+      let x = c.getContext("2d");
+
       setInterval(() => {
-        ctx.fillStyle = "rgb(200, 0, 0)";
-        ctx.fillRect(1 + r() * 10, 1 + r() * 10, 8, 8);
-      }, 10);
+        ar[r()][r()] = 1.0;
+      }, 500);
+
+      setInterval(() => {
+        x.clearRect(0, 0, c.width, c.height);
+
+        ar.forEach((ro, i) => {
+          ro.forEach((co, j) => {
+            x.fillStyle = `rgba(153, 0, 51, ${co})`;
+            x.fillRect(s(i), s(j), 23, 23);
+            ar[i][j] = co - 0.001;
+          });
+        });
+      }, 16);
     </script>
   </body>
 </html>
