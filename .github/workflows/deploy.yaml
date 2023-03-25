@@ -18,8 +18,14 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
+
       - name: ↕️ Install dependencies
         run: npm ci
 
       - name: 👷 Build
         run: npm run build
+        
+      - name: ⬆️ Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: dist/
