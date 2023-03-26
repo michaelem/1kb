@@ -5,25 +5,32 @@
 
   <head>
     <style>
-      body,html {
+      body,
+      html {
         margin: 0;
         padding: 0;
         background-color: #fefaf0;
+        font-family: sans-serif;
         font-size: 24px;
       }
-      
+
       a {
         color: #990033;
         text-decoration: none;
       }
 
-      #a {
+      body {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
         gap: 32px;
-        font-family: sans-serif;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          flex-direction: column;
+        }
       }
 
       ul {
@@ -32,45 +39,43 @@
       }
     </style>
   </head>
-  
+
   <body>
-    <div id="a">
-      <canvas id="c" width="200" height="200"></canvas>
-      <div>
-        <h1>Hello, I'm Emi!</h1>
-        <ul>
-          <li>
-            Find my full website at
-            <a href="https://emi.industries">emi.industries</a>.
-          </li>
-          <li>
-            I also post some of my photos over at
-            <a href="https://kondens.at">kondens.at</a>!
-          </li>
-        </ul>
-      </div>
+    <canvas id="c" width="200" height="200"></canvas>
+    <div>
+      <h1>Hi, I'm Emi!</h1>
+      <ul>
+        <li>
+          Find my projects at
+          <a href="https://emi.industries">emi.industries</a>
+        </li>
+        <li>
+          And my photos over at
+          <a href="https://kondens.at">kondens.at</a>
+        </li>
+      </ul>
     </div>
 
     <script>
-      r = () => Math.round(Math.random() * 7);
-      s = (a) => 1 + a * 25;
+      p = () => Math.round(Math.random() * 7);
+      s = (y) => 1 + y * 25;
 
-      let ar = Array(8).fill().map(() => Array(8).fill(0));
-      let c = document.getElementById("c")
-      let x = c.getContext("2d");
+      a = Array(8)
+        .fill()
+        .map(() => Array(8).fill(0));
+      c = document.getElementById("c");
+      x = c.getContext("2d");
+
+      setInterval(() => (a[p()][p()] = 1.0), 500);
 
       setInterval(() => {
-        ar[r()][r()] = 1.0;
-      }, 500);
+        x.clearRect(0, 0, 200, 200);
 
-      setInterval(() => {
-        x.clearRect(0, 0, c.width, c.height);
-
-        ar.forEach((ro, i) => {
-          ro.forEach((co, j) => {
-            x.fillStyle = `rgba(153, 0, 51, ${co})`;
+        a.forEach((r, i) => {
+          r.forEach((c, j) => {
+            x.fillStyle = `rgba(153, 0, 51, ${c})`;
             x.fillRect(s(i), s(j), 23, 23);
-            ar[i][j] = co - 0.001;
+            a[i][j] = c - 0.001;
           });
         });
       }, 16);
