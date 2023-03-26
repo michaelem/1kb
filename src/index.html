@@ -2,6 +2,7 @@
 <html lang="en">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1kB</title>
+  <link rel="icon" href="data:," />
 
   <head>
     <style>
@@ -32,11 +33,6 @@
           flex-direction: column;
         }
       }
-
-      ul {
-        list-style: none;
-        padding-left: 0;
-      }
     </style>
   </head>
 
@@ -44,29 +40,21 @@
     <canvas id="c" width="200" height="200"></canvas>
     <div>
       <h1>Hi, I'm Emi!</h1>
-      <ul>
-        <li>
-          Find my projects at
-          <a href="https://emi.industries">emi.industries</a>
-        </li>
-        <li>
-          And my photos over at
-          <a href="https://kondens.at">kondens.at</a>
-        </li>
-      </ul>
+      <p>
+        Find my projects at <a href="https://emi.industries">emi.industries</a>,<br>
+        and my photos over at <a href="https://kondens.at">kondens.at</a>!
+      </p>
     </div>
 
     <script>
-      p = () => Math.round(Math.random() * 7);
-      s = (y) => 1 + y * 25;
+      p = () => Math.floor(Math.random() * 8);
 
       a = Array(8)
         .fill()
         .map(() => Array(8).fill(0));
-      c = document.getElementById("c");
-      x = c.getContext("2d");
+      x = document.getElementById("c").getContext("2d");
 
-      setInterval(() => (a[p()][p()] = 1.0), 500);
+      setInterval(() => (a[p()][p()] = 1), 500);
 
       setInterval(() => {
         x.clearRect(0, 0, 200, 200);
@@ -74,7 +62,7 @@
         a.forEach((r, i) => {
           r.forEach((c, j) => {
             x.fillStyle = `rgba(153, 0, 51, ${c})`;
-            x.fillRect(s(i), s(j), 23, 23);
+            x.fillRect(1 + i * 25, 1 + j * 25, 23, 23);
             a[i][j] = c - 0.001;
           });
         });
