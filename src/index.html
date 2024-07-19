@@ -1,72 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1kB</title>
-  <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1kB</title>
+    <link rel="icon" href="data:," />
 
-  <head>
-    <style>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        background-color: #fefaf0;
-        font-family: sans-serif;
-        font-size: 24px;
-      }
+    <head>
+        <style>
+            body {
+                margin: 0;
+                background: #fefaf0;
+                font: 24px sans-serif;
 
-      a {
-        color: #990033;
-        text-decoration: none;
-      }
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        gap: 32px;
-      }
+                height: 100vh;
+                gap: 32px;
+            }
 
-      @media (max-width: 600px) {
-        body {
-          flex-direction: column;
-        }
-      }
-    </style>
-  </head>
+            @media (max-width: 600px) {
+                body {
+                    flex-direction: column;
+                }
+            }
 
-  <body>
-    <canvas id="c" width="200" height="200"></canvas>
-    <div>
-      <h1>Hi, I'm Emi!</h1>
-      <p>
-        Find my projects at <a href="https://emi.industries">emi.industries</a>,<br>
-        and my photos over at <a href="https://kondens.at">kondens.at</a>!
-      </p>
-    </div>
+            a {
+                color: #990033;
+                text-decoration: none;
+            }
 
-    <script>
-      p = () => Math.floor(Math.random() * 8);
+            #c {
+                cursor: pointer;
+            }
+        </style>
+    </head>
 
-      a = Array(8)
-        .fill()
-        .map(() => Array(8).fill(0));
-      x = document.getElementById("c").getContext("2d");
+    <body>
+        <canvas id="c" width="200" height="200"></canvas>
+        <div>
+            <h1>Hi, I'm Emi!</h1>
+            <p>
+                Find my projects at
+                <a href="https://emi.industries">emi.industries</a>,<br />
+                and my photos over at
+                <a href="https://kondens.at">kondens.at</a>!
+            </p>
+        </div>
 
-      setInterval(() => (a[p()][p()] = 1), 500);
+        <script>
+            p = () => Math.floor(Math.random() * 8);
+            // t = setInterval;
+            a = Array(8)
+                .fill()
+                .map(() => Array(8).fill(0));
 
-      setInterval(() => {
-        x.clearRect(0, 0, 200, 200);
+            can = document.getElementById("c");
+            c = can.getContext("2d");
 
-        a.forEach((r, i) => {
-          r.forEach((c, j) => {
-            x.fillStyle = `rgba(153, 0, 51, ${c})`;
-            x.fillRect(1 + i * 25, 1 + j * 25, 23, 23);
-            a[i][j] = c - 0.001;
-          });
-        });
-      }, 16);
-    </script>
-  </body>
+            setInterval(() => (a[p()][p()] = 1), 500);
+
+            setInterval(() => {
+                c.clearRect(0, 0, 200, 200);
+
+                a.forEach((r, i) => {
+                    r.forEach((n, m) => {
+                        c.fillStyle = `rgba(153, 0, 51, ${n})`;
+                        c.fillRect(1 + i * 25, 1 + m * 25, 23, 23);
+                        a[i][m] = n - 0.001;
+                    });
+                });
+            }, 16);
+        </script>
+    </body>
 </html>
