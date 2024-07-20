@@ -37,34 +37,32 @@
     </head>
 
     <body>
-        <canvas id="c" width="200" height="200"></canvas>
+        <canvas id="c" width="200" height="200" onclick="g(event)"></canvas>
         <div>
             <h1>Hi, I'm Emi!</h1>
             <p>
                 Find my projects on
                 <a href="https://emi.industries">emi.industries</a><br />
                 and my photos on
-                <a href="https://kondens.at">kondens.at</a>!
+                <a href="https://kondens.at">kondens.at</a>
             </p>
         </div>
 
         <script>
             t = setInterval;
 
-            g = 25;
-
             p = () => ~~(Math.random() * 8);
-            v = () => Array(8).fill(0);
 
+            v = () => Array(8).fill(0);
             a = v().map(v);
 
             q = document.getElementById("c");
             c = q.getContext("2d");
 
-            q.addEventListener("click", (e) => {
+            g = (e) => {
                 b = q.getClientRects()[0];
-                a[~~((e.x - b.x) / g)][~~((e.y - b.y) / g)] = 1;
-            });
+                a[~~((e.x - b.x) / 25)][~~((e.y - b.y) / 25)] = 1;
+            };
 
             t(() => (a[p()][p()] = 1), 500);
 
@@ -74,7 +72,7 @@
                 a.map((r, i) => {
                     r.map((e, j) => {
                         c.fillStyle = `rgba(153,0,51,${e})`;
-                        c.fillRect(1 + i * g, 1 + j * g, 23, 23);
+                        c.fillRect(1 + i * 25, 1 + j * 25, 23, 23);
                         a[i][j] *= 0.999;
                     });
                 });
