@@ -49,13 +49,12 @@
         </div>
 
         <script>
-            f = Math.floor;
             t = setInterval;
 
             d = 200;
             g = 25;
 
-            p = () => f(Math.random() * 8);
+            p = () => ~~(Math.random() * 8);
             v = () => Array(8).fill(0);
 
             a = v().map(v);
@@ -63,9 +62,10 @@
             q = document.getElementById("c");
             c = q.getContext("2d");
 
-            ca.addEventListener("click", (e) => {
-                b = ca.getBoundingClientRect();
-                a[f((e.clientX - b.left) / g)][f((e.clientY - b.top) / g)] = 1;
+            q.addEventListener("click", (e) => {
+                b = q.getBoundingClientRect();
+                a[~~((e.clientX - b.left) / g)][~~((e.clientY - b.top) / g)] =
+                    1;
             });
 
             t(() => (a[p()][p()] = 1), 500);
