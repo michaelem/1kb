@@ -62,7 +62,7 @@
             c = q.getContext("2d");
 
             q.addEventListener("click", (e) => {
-                b = q.getBoundingClientRect();
+                b = q.getClientRects()[0];
                 a[~~((e.x - b.x) / g)][~~((e.y - b.y) / g)] = 1;
             });
 
