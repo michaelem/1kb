@@ -49,25 +49,35 @@
         </div>
 
         <script>
-            p = () => Math.floor(Math.random() * 8);
-            // t = setInterval;
-            a = Array(8)
-                .fill()
-                .map(() => Array(8).fill(0));
+            f = Math.floor;
+            t = setInterval;
 
-            can = document.getElementById("c");
-            c = can.getContext("2d");
+            d = 200;
+            g = d / 8;
 
-            setInterval(() => (a[p()][p()] = 1), 500);
+            p = () => f(Math.random() * 8);
+            v = () => Array(8).fill(0);
 
-            setInterval(() => {
-                c.clearRect(0, 0, 200, 200);
+            a = v().map(v);
 
-                a.forEach((r, i) => {
-                    r.forEach((n, m) => {
-                        c.fillStyle = `rgba(153, 0, 51, ${n})`;
-                        c.fillRect(1 + i * 25, 1 + m * 25, 23, 23);
-                        a[i][m] = n - 0.001;
+            ca = document.getElementById("c");
+            c = ca.getContext("2d");
+
+            ca.addEventListener("click", (e) => {
+                b = ca.getBoundingClientRect();
+                a[f((e.clientX - b.left) / g)][f((e.clientY - b.top) / g)] = 1;
+            });
+
+            t(() => (a[p()][p()] = 1), 500);
+
+            t(() => {
+                c.clearRect(0, 0, d, d);
+
+                a.map((r, i) => {
+                    r.map((e, j) => {
+                        c.fillStyle = `rgba(153, 0, 51, ${e})`;
+                        c.fillRect(1 + i * g, 1 + j * g, 23, 23);
+                        a[i][j] *= 0.999;
                     });
                 });
             }, 16);
