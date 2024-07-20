@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "minify src/index.html > dist/index.html; ls -S -lh dist/index.html | awk '{print $5, $9}'"
+    "build": "minify src/index.html > dist/index.html; ls -S -l dist/index.html | awk '{print $5, $9}'"
   },
   "author": "",
   "license": "MIT",
