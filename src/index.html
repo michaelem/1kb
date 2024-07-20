@@ -51,7 +51,6 @@
         <script>
             t = setInterval;
 
-            d = 200;
             g = 25;
 
             p = () => ~~(Math.random() * 8);
@@ -71,7 +70,7 @@
             t(() => (a[p()][p()] = 1), 500);
 
             t(() => {
-                c.clearRect(0, 0, d, d);
+                c.clearRect(0, 0, 200, 200);
 
                 a.map((r, i) => {
                     r.map((e, j) => {
