@@ -53,15 +53,15 @@
             t = setInterval;
 
             d = 200;
-            g = d / 8;
+            g = 25;
 
             p = () => f(Math.random() * 8);
             v = () => Array(8).fill(0);
 
             a = v().map(v);
 
-            ca = document.getElementById("c");
-            c = ca.getContext("2d");
+            q = document.getElementById("c");
+            c = q.getContext("2d");
 
             ca.addEventListener("click", (e) => {
                 b = ca.getBoundingClientRect();
