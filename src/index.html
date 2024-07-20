@@ -63,8 +63,7 @@
 
             q.addEventListener("click", (e) => {
                 b = q.getBoundingClientRect();
-                a[~~((e.clientX - b.left) / g)][~~((e.clientY - b.top) / g)] =
-                    1;
+                a[~~((e.x - b.x) / g)][~~((e.y - b.y) / g)] = 1;
             });
 
             t(() => (a[p()][p()] = 1), 500);
